@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShrinkIt | Smart File Compressor</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- PDF-Lib for browser-side PDF processing -->
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>ShrinkIt</h1>
+        <p>Optimize your Images and PDFs instantly.</p>
+    </header>
+    
+    <div class="drop-zone" id="dropZone">
+        <p id="dropText">Drag & drop a file or click to upload</p>
+        <span id="fileNameDisplay"></span>
+        <input type="file" id="fileInput" hidden accept="image/jpeg,image/png,.pdf">
+    </div>
+
+    <div class="stats-container">
+        <div class="stat-box">
+            <span class="label">Current Size</span>
+            <span id="currentSizeDisplay" class="value">0 KB</span>
+        </div>
+        <div class="stat-box">
+            <span class="label">Expected Size</span>
+            <span id="expectedSizeDisplay" class="value">0 KB</span>
+        </div>
+    </div>
+
+    <div class="controls">
+        <div class="slider-header">
+            <label>Compression Level</label>
+            <span id="qualityVal">70%</span>
+        </div>
+        <input type="range" id="quality" min="0.1" max="1.0" step="0.05" value="0.7">
+        <p class="hint">Lower percentage = smaller file but lower quality.</p>
+    </div>
+
+    <button id="compressBtn" class="primary-btn">Compress & Download</button>
+    
+    <div id="status"></div>
+</div>
+
+<canvas id="canvas" style="display:none;"></canvas>
+
+<script src="script.js"></script>
+</body>
+</html>
